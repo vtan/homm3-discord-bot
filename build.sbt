@@ -4,10 +4,12 @@ scalaVersion := "2.13.2"
 
 libraryDependencies ++= Vector(
   "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "com.softwaremill.sttp.client" %% "akka-http-backend" % "2.1.1",
+  "com.softwaremill.sttp.client" %% "circe" % "2.1.1",
+  "com.softwaremill.sttp.client" %% "core" % "2.1.1",
   "com.typesafe.akka" %% "akka-actor-typed" % "2.6.5",
   "com.typesafe.akka" %% "akka-http" % "10.1.11",
   "com.typesafe.akka" %% "akka-stream-typed" % "2.6.5",
-  "de.heikoseeberger" %% "akka-http-circe" % "1.29.1",
   "io.circe" %% "circe-core" % "0.12.3",
   "io.circe" %% "circe-generic" % "0.12.3",
   "io.circe" %% "circe-parser" % "0.12.3",
