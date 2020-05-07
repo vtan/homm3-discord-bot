@@ -3,7 +3,6 @@ version := "0.1"
 scalaVersion := "2.13.2"
 
 libraryDependencies ++= Vector(
-  "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.softwaremill.sttp.client" %% "akka-http-backend" % "2.1.1",
   "com.softwaremill.sttp.client" %% "circe" % "2.1.1",
   "com.softwaremill.sttp.client" %% "core" % "2.1.1",
@@ -14,6 +13,7 @@ libraryDependencies ++= Vector(
   "io.circe" %% "circe-generic" % "0.12.3",
   "io.circe" %% "circe-parser" % "0.12.3",
 
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
   "org.jsoup" % "jsoup" % "1.13.1"
 )
 
