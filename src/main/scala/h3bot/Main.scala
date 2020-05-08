@@ -22,8 +22,8 @@ object Main {
 
     val config = ConfigFactory.load()
     val discordApiClient = new DiscordApiClient(config)
-    val creatures = CreatureListScraper.scrapeCreatures
-    val botFlow = new BotFlow(config, discordApiClient, creatures)
+    val creatureList = CreatureList(CreatureListScraper.scrapeCreatures)
+    val botFlow = new BotFlow(config, discordApiClient, creatureList)
 
     val (cancellable, done) = botFlow.runnableGraph.run
     done.onComplete { result =>
@@ -44,4 +44,3 @@ object Main {
     }
   }
 }
-

@@ -1,6 +1,6 @@
 package h3bot.bot
 
-import h3bot.Creature
+import h3bot.CreatureList
 import h3bot.discord.{DiscordApiClient, Message, NewMessage}
 
 import scala.concurrent.duration._
@@ -15,7 +15,7 @@ import org.slf4j.{Logger, LoggerFactory}
 class BotFlow(
   config: Config,
   discordApiClient: DiscordApiClient,
-  creatures: Seq[Creature]
+  creatureList: CreatureList
 )(
   implicit ec: ExecutionContext
 ) {
@@ -28,13 +28,7 @@ class BotFlow(
       .filter(_.content startsWith "!h3")
       .mapConcat[String] { message =>
         val queriedName = message.content.stripPrefix("!h3").trim
-        creatures
-          .find(
-            _.name.toLowerCase.filterNot(_.isSpaceChar) ==
-              queriedName.toLowerCase.filterNot(_.isSpaceChar)
-          )
-          .map(_.toString)
-          .toList
+        creatureList.search(queriedName).map(_.toString).toList
       }
       .map(NewMessage(_))
       .toMat(replySink)(Keep.both)

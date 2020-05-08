@@ -13,9 +13,9 @@ object CreatureListScraper extends AsScalaExtensions {
   private def loadFile(): String =
     Source.fromFile(filename).mkString
 
-  def scrapeCreatures: Seq[Creature] = {
+  def scrapeCreatures: Vector[Creature] = {
     val document = Jsoup.parse(loadFile())
-    document.select("tr").asScala.flatMap(scrapeCreature).toSeq
+    document.select("tr").asScala.flatMap(scrapeCreature).toVector
   }
 
   def scrapeCreature(row: Element): Option[Creature] = {

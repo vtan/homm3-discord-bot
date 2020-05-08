@@ -15,4 +15,7 @@ final case class Creature(
   value: Int,
   cost: String,
   special: String
-)
+) {
+  val searchKey: String = name.toLowerCase
+  val searchWords: Array[String] = searchKey.split("\\s+")
+}
